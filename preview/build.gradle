@@ -1,0 +1,72 @@
+apply plugin: "java"
+apply plugin: "jetty"
+
+gwt {
+    gwtVersion=project.gwtVersion // Should match the gwt version used for building the gwt backend
+    maxHeapSize="1G" // Default 256m is not enough for gwt compiler. GWT is HUNGRY
+    minHeapSize="1G"
+
+    src = files(file("src/")) // Needs to be in front of "modules" below.
+    modules 'com.badlogicgames.gdxskins.GdxDefinition'
+    devModules 'com.badlogicgames.gdxskins.GdxDefinitionSuperdev'
+
+    compiler {
+        strict = true;
+        enableClosureCompiler = true;
+        disableCastChecking = true;
+    }
+}
+
+task compileMasterJson << {
+    File rootFile = file("../skins")
+    File masterList = file("../skins/masterlist")
+    if (!masterList.exists()) {
+        masterList.createNewFile()
+    } else {
+        masterList.write("")
+    }
+    rootFile.eachFile { child ->
+        if (child.isDirectory()) {
+            println child.name
+            masterList.append(child.name + "\r\n")
+        }
+    }
+
+}
+
+task draftRun(type: JettyRunWar) {
+    dependsOn draftWar
+    dependsOn.remove('war')
+    webApp=draftWar.archivePath
+    daemon=true
+}
+
+task superDev(type: de.richsource.gradle.plugins.gwt.GwtSuperDev) {
+    dependsOn compileMasterJson, draftRun
+    gwt.modules = gwt.devModules
+}
+
+task dist(dependsOn: compileGwt) {
+    doLast {
+        file("build/dist").mkdirs()
+        copy {
+            from "build/gwt/out"
+            into "build/dist"
+        }
+        copy {
+            from "webapp"
+            into "build/dist"
+        }
+        copy {
+            from "war"
+            into "build/dist"
+        }
+    }
+}
+
+draftWar {
+    from "war"
+}
+
+sourceCompatibility = 1.6
+sourceSets.main.java.srcDirs = [ "src/" ]

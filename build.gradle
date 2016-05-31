@@ -1,0 +1,47 @@
+import groovy.json.JsonSlurper
+
+buildscript {
+
+    ant.get(src: 'http://libgdx.badlogicgames.com/libgdx-site/service/getVersions?release=false', dest: 'versions.json')
+    def versionFile = file('versions.json')
+    def json
+    if (versionFile.exists()) {
+        json = new JsonSlurper().parseText(versionFile.text)
+    } else throw new GradleException("Unable to retrieve latest versions, please check your internet connection")
+
+    ext {
+        gdxVersion = json.libgdxSnapshot
+        gwtVersion = json.gwtVersion
+        gwtGradleVersion = json.gwtPluginVersion
+    }
+
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    }
+
+    dependencies {
+        classpath "de.richsource.gradle.plugins:gwt-gradle-plugin:$gwtGradleVersion"
+    }
+}
+
+project(":preview") {
+    apply plugin: "java"
+    apply plugin: "gwt"
+    apply plugin: "war"
+    webAppDirName = 'webapp'
+
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    }
+
+    dependencies {
+        compile "com.badlogicgames.gdx:gdx:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
+        compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
+    }
+}
