@@ -9,7 +9,7 @@ See the [website](http://libgdx.badlogicgames.com/skins.html) for easy downloads
 
 * Clone the repository
 * Create your Skin folder
- * Your Skin folder should contain an assets folder for your pngs, skin.json files, atlas and font files
+ * Your Skin folder should contain an `assets` folder for your pngs, skin.json files, atlas and font files
  * Create an `info.json` file with the following format:
 
 ```json
@@ -22,4 +22,6 @@ See the [website](http://libgdx.badlogicgames.com/skins.html) for easy downloads
 
 ```
  * add a `preview.png` image of your Skin
+
+* Place your Skin folder into the skins folder
 * Submit a Pull Request with your changes
