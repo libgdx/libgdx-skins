@@ -17,7 +17,8 @@ See the [website](http://libgdx.badlogicgames.com/skins.html) for easy downloads
   "title": "Your Skin Name",
   "description": "Your Skin description",
   "author": "Your name",
-  "foldername": "The folder name"
+  "foldername": "The folder name",
+  "filename": "YourSkin.json"
 }
 
 ```
