@@ -3,7 +3,7 @@
 # libgdx-skins
 Community submitted Scene2D UI Skins
 
-
+----
 
 See a live interactive preview of each Skin [here](https://libgdx.badlogicgames.com/demos/libgdx-skins/)
 
