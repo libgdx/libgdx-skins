@@ -3,7 +3,12 @@
 # libgdx-skins
 Community submitted Scene2D UI Skins
 
-See the [website](http://libgdx.badlogicgames.com/skins.html) for easy downloads and previews of all the skins
+
+
+See a live interactive preview of each Skin [here](https://libgdx.badlogicgames.com/demos/libgdx-skins/)
+
+Download each Skin in a small zip [here](http://libgdx.badlogicgames.com/skins.html)
+
 
 ## Submitting your skin
 
