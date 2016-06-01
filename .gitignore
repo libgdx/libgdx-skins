@@ -120,3 +120,8 @@ www-test/
 # JIRA plugin
 
 # Crashlytics plugin (for Android Studio and IntelliJ)
+
+
+# gradle generated files from our project
+versions.json
+masterlist
