@@ -1,4 +1,4 @@
-package com.badlogicgames.gdxskins.client;
+package com.badlogicgames.gdxskins.client.skins.info;
 
 public class SkinMeta {
 	public String title;
