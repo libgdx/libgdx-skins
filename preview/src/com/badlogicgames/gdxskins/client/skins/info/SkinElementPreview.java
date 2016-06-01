@@ -1,7 +1,7 @@
 package com.badlogicgames.gdxskins.client.skins.info;
 
 import com.badlogic.gdx.scenes.scene2d.ui.*;
-import com.badlogicgames.gdxskins.client.skins.elements.SkinDataTable;
+import com.badlogicgames.gdxskins.client.skins.elements.tabs.ChangeSkinTab;
 
 /**
  * Created by Lyze on 01.06.2016.
@@ -20,9 +20,6 @@ public class SkinElementPreview extends Table {
     public void createUI() {
         Skin skin = skinContainer.skin;
 
-        SkinDataTable skinDataTable = new SkinDataTable(skinContainer);
-        skinDataTable.init();
-        add(skinDataTable);
 
         /*
         Window textWindow = new Window("Text Widgets", skin);

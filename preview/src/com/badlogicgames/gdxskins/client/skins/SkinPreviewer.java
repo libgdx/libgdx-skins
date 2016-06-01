@@ -65,4 +65,10 @@ public class SkinPreviewer extends Table {
         add(scroller).width(250);
         add(tab).expand().fill();
     }
+
+    public void changeSkin(SkinContainer selected) {
+        for (Tab tab : tabsArray) {
+            tab.changeSkin(selected);
+        }
+    }
 }

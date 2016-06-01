@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
+import com.badlogicgames.gdxskins.client.skins.SkinChangerListener;
 import com.badlogicgames.gdxskins.client.skins.SkinPreviewer;
 import com.badlogicgames.gdxskins.client.skins.elements.tabs.ChangeSkinTab;
 import com.badlogicgames.gdxskins.client.skins.elements.tabs.TestTab;
@@ -19,7 +20,7 @@ public class SkinTest extends ApplicationAdapter {
 
     private SkinPreviewer skinPreviewer;
 
-	private Array<SkinContainer> skins = new Array<SkinContainer>();
+	public static Array<SkinContainer> skins = new Array<SkinContainer>();
 	private Stage stage;
 
 	@Override
@@ -49,7 +50,7 @@ public class SkinTest extends ApplicationAdapter {
         SkinContainer initialSkin = skins.first();
 
         skinPreviewer = new SkinPreviewer(initialSkin);
-        skinPreviewer.addTab(new ChangeSkinTab(initialSkin));
+        skinPreviewer.addTab(new ChangeSkinTab(initialSkin, new SkinChangerListener(skinPreviewer)));
         skinPreviewer.addTab(new TestTab(initialSkin));
         skinPreviewer.initiate();
 

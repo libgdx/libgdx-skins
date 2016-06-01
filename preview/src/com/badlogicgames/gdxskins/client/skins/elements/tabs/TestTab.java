@@ -10,6 +10,10 @@ public class TestTab extends Tab {
     public TestTab(SkinContainer skinContainer) {
         super(skinContainer);
 
+    }
+
+    @Override
+    public void initiate() {
         add(new Label("Test", skinContainer.skin));
     }
 
