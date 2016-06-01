@@ -18,6 +18,8 @@ public class ChangeSkinTab extends Tab {
         super(skinContainer);
         this.skinChangerListener = skinChangerListener;
 
+        defaults().pad(10);
+
         initiate();
     }
 

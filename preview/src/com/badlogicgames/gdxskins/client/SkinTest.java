@@ -12,6 +12,7 @@ import com.badlogicgames.gdxskins.client.skins.SkinChangerListener;
 import com.badlogicgames.gdxskins.client.skins.SkinPreviewer;
 import com.badlogicgames.gdxskins.client.skins.elements.tabs.ChangeSkinTab;
 import com.badlogicgames.gdxskins.client.skins.elements.tabs.PreviewTab;
+import com.badlogicgames.gdxskins.client.skins.elements.tabs.rpg.RpgGuiTab;
 import com.badlogicgames.gdxskins.client.skins.info.SkinContainer;
 import com.badlogicgames.gdxskins.client.skins.info.SkinMeta;
 import com.google.gwt.user.client.Window;
@@ -52,6 +53,7 @@ public class SkinTest extends ApplicationAdapter {
         skinPreviewer = new SkinPreviewer(initialSkin);
         skinPreviewer.addTab(new ChangeSkinTab(initialSkin, new SkinChangerListener(skinPreviewer)));
         skinPreviewer.addTab(new PreviewTab(initialSkin));
+        skinPreviewer.addTab(new RpgGuiTab(initialSkin));
         skinPreviewer.initiate();
 
         stage.addActor(skinPreviewer);
