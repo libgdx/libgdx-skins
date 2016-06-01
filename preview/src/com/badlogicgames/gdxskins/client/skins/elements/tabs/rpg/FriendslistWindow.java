@@ -15,8 +15,8 @@ public class FriendslistWindow extends Window {
 
 
         Array<String> namesArray = new Array<String>();
-        for (int i = 0; i < 20; i++) {
-            String name = " Banana";
+        for (int i = 0; i < 50; i++) {
+            String name = " Banana_" + i;
             if (i % 3 == 0) {
                 name = "[O] " + name;
             } else {
@@ -26,7 +26,10 @@ public class FriendslistWindow extends Window {
         }
 
         List<String> names = new List<String>(skin);
-        ScrollPane scroller = new ScrollPane(names);
+        names.setItems(namesArray);
+        ScrollPane scroller = new ScrollPane(names, skin);
+
+        add(scroller).height(500).width(200);
 
         pack();
         setKeepWithinStage(true);

@@ -35,7 +35,9 @@ public class RpgGuiTab extends Tab {
         avatarWindow.setPosition(10, Gdx.graphics.getHeight() - notificationWindow.getHeight() - 30 - avatarWindow.getHeight());
         addActor(avatarWindow);
 
-        Friendslist
+        FriendslistWindow friendslistWindow = new FriendslistWindow(skinContainer.skin);
+        friendslistWindow.setPosition((Gdx.graphics.getWidth()-250) - friendslistWindow.getWidth() - 10, 150);
+        addActor(friendslistWindow);
     }
 
     @Override

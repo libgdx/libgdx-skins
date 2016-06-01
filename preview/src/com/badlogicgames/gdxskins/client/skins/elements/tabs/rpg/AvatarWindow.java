@@ -17,12 +17,14 @@ public class AvatarWindow extends Window {
 
         Table status = new Table(skin);
 
+        status.add(new Label("Health", skin));
         ProgressBar health = new ProgressBar(0, 100, 1, false, skin);
         health.setValue(75);
         status.add(health).width(100);
 
         status.row();
 
+        status.add(new Label("Mana", skin));
         ProgressBar mana = new ProgressBar(0, 100, 1, false, skin);
         mana.setValue(24);
         status.add(mana).width(100);
