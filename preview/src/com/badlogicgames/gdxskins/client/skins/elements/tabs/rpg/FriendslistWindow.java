@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.utils.Array;
 
 /**
- * Created by Lyze on 01.06.2016.
+ * @author lyze237
  */
 public class FriendslistWindow extends Window {
     public FriendslistWindow (Skin skin) {

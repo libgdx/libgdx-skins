@@ -3,7 +3,7 @@ package com.badlogicgames.gdxskins.client.skins.elements.tabs.rpg;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 
 /**
- * Created by Lyze on 01.06.2016.
+ * @author lyze237
  */
 public class SpellWindow extends Window {
     public SpellWindow (Skin skin) {

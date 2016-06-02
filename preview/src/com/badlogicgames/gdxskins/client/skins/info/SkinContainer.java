@@ -3,7 +3,7 @@ package com.badlogicgames.gdxskins.client.skins.info;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 /**
- * Created by Lyze on 01.06.2016.
+ * @author lyze237
  */
 public class SkinContainer {
     public SkinMeta skinMeta;

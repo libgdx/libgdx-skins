@@ -5,7 +5,7 @@ import com.badlogicgames.gdxskins.client.skins.elements.tabs.Tab;
 import com.badlogicgames.gdxskins.client.skins.info.SkinContainer;
 
 /**
- * Created by Lyze on 01.06.2016.
+ * @author lyze237
  */
 public class RpgGuiTab extends Tab {
     public RpgGuiTab (SkinContainer skinContainer) {

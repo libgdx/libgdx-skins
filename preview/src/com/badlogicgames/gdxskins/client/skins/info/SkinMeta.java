@@ -1,5 +1,8 @@
 package com.badlogicgames.gdxskins.client.skins.info;
 
+/**
+ * @author Tom-Ski
+ */
 public class SkinMeta {
     public String title;
     public String description;

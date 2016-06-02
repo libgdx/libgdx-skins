@@ -5,7 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 
 /**
- * Created by Lyze on 01.06.2016.
+ * @author lyze237
  */
 public class InventoryWindow extends Window {
     public InventoryWindow (Skin skin) {
