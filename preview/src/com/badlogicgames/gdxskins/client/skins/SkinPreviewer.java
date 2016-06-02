@@ -13,7 +13,7 @@ import com.badlogicgames.gdxskins.client.skins.elements.tabs.Tab;
 import com.badlogicgames.gdxskins.client.skins.info.SkinContainer;
 
 /**
- * Created by Lyze on 01.06.2016.
+ * @author lyze237
  */
 public class SkinPreviewer extends Table {
 
@@ -28,71 +28,71 @@ public class SkinPreviewer extends Table {
     public SkinPreviewer(SkinContainer skinContainer, SkinChangerListener skinChangerListener) {
         this.skinContainer = skinContainer;
 
-        setFillParent(true);
+        setFillParent (true);
 
-        tabsArray = new Array<Tab>();
-        tabs = new List<Tab>(skinContainer.skin);
-        tabs.setItems(tabsArray);
-        tabs.addListener(new ChangeListener() {
+        tabsArray = new Array<Tab> ();
+        tabs = new List<Tab> (skinContainer.skin);
+        tabs.setItems (tabsArray);
+        tabs.addListener (new ChangeListener () {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                changeTab(tabs.getSelected());
+                changeTab (tabs.getSelected ());
             }
         });
 
-        scroller = new ScrollPane(tabs);
+        scroller = new ScrollPane (tabs);
 
-        changeSkinTab = new ChangeSkinTab(skinContainer, skinChangerListener);
+        changeSkinTab = new ChangeSkinTab (skinContainer, skinChangerListener);
     }
 
     public void initiate() {
-        tabs.setSelectedIndex(0);
-        changeTab(tabs.getSelected());
+        tabs.setSelectedIndex (0);
+        changeTab (tabs.getSelected ());
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        super.draw(batch, parentAlpha);
+        super.draw (batch, parentAlpha);
     }
 
     @Override
     public void act(float delta) {
-        super.act(delta);
+        super.act (delta);
     }
 
     public void addTab(Tab tab) {
-        tabsArray.add(tab);
-        tabs.setItems(tabsArray);
+        tabsArray.add (tab);
+        tabs.setItems (tabsArray);
     }
-    
+
     public void changeTab(Tab tab) {
-        clearChildren();
+        clearChildren ();
 
-        Table table = new Table();
+        Table table = new Table ();
 
-        Window descriptionWindow = new Window("Description", skinContainer.skin);
-        descriptionWindow.add(changeSkinTab);
-        descriptionWindow.setMovable(false);
-        descriptionWindow.setHeight(changeSkinTab.getHeight() + 10);
+        Window descriptionWindow = new Window ("Description", skinContainer.skin);
+        descriptionWindow.add (changeSkinTab);
+        descriptionWindow.setMovable (false);
+        descriptionWindow.setHeight (changeSkinTab.getHeight () + 10);
 
-        table.add(descriptionWindow).fillX();
+        table.add (descriptionWindow).fillX ();
 
-        table.row();
+        table.row ();
 
 
-        Window scrollerWindow = new Window("Previews", skinContainer.skin);
-        scrollerWindow.setMovable(false);
-        scrollerWindow.add(scroller).expand().fill();
+        Window scrollerWindow = new Window ("Previews", skinContainer.skin);
+        scrollerWindow.setMovable (false);
+        scrollerWindow.add (scroller).expand ().fill ();
 
-        table.add(scrollerWindow).fill().expand();
+        table.add (scrollerWindow).fill ().expand ();
 
-        add(table).width(250).fill();
-        add(tab).expand().fill();
+        add (table).width (250).fill ();
+        add (tab).expand ().fill ();
     }
 
     public void changeSkin(SkinContainer selected) {
         for (Tab tab : tabsArray) {
-            tab.changeSkin(selected);
+            tab.changeSkin (selected);
         }
     }
 }

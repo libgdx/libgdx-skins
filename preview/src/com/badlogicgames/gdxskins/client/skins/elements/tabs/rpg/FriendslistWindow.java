@@ -11,10 +11,10 @@ import com.badlogic.gdx.utils.Array;
  */
 public class FriendslistWindow extends Window {
     public FriendslistWindow(Skin skin) {
-        super("Friendslist", skin);
+        super ("Friendslist", skin);
 
 
-        Array<String> namesArray = new Array<String>();
+        Array<String> namesArray = new Array<String> ();
         for (int i = 0; i < 50; i++) {
             String name = " Banana_" + i;
             if (i % 3 == 0) {
@@ -22,16 +22,16 @@ public class FriendslistWindow extends Window {
             } else {
                 name = "[X] " + name;
             }
-            namesArray.add(name);
+            namesArray.add (name);
         }
 
-        List<String> names = new List<String>(skin);
-        names.setItems(namesArray);
-        ScrollPane scroller = new ScrollPane(names, skin);
+        List<String> names = new List<String> (skin);
+        names.setItems (namesArray);
+        ScrollPane scroller = new ScrollPane (names, skin);
 
-        add(scroller).height(500).width(200);
+        add (scroller).height (500).width (200);
 
-        pack();
-        setKeepWithinStage(true);
+        pack ();
+        setKeepWithinStage (true);
     }
 }

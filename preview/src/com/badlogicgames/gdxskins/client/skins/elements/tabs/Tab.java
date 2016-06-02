@@ -4,13 +4,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogicgames.gdxskins.client.skins.info.SkinContainer;
 
 /**
- * Created by Lyze on 01.06.2016.
+ * @author lyze237
  */
 public abstract class Tab extends Table {
     public SkinContainer skinContainer;
 
     public Tab(SkinContainer skinContainer) {
-        super(skinContainer.skin);
+        super (skinContainer.skin);
 
         this.skinContainer = skinContainer;
     }
@@ -21,12 +21,12 @@ public abstract class Tab extends Table {
 
     @Override
     public String toString() {
-        return getName();
+        return getName ();
     }
 
     public void changeSkin(SkinContainer skinContainer) {
-        clearChildren();
+        clearChildren ();
         this.skinContainer = skinContainer;
-        initiate();
+        initiate ();
     }
 }
