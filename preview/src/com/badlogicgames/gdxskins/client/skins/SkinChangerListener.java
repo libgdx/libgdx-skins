@@ -12,13 +12,13 @@ public class SkinChangerListener extends ChangeListener {
 
     private SkinPreviewer previewer;
 
-    public void setPreviewer(SkinPreviewer previewer) {
+    public void setPreviewer (SkinPreviewer previewer) {
         this.previewer = previewer;
     }
 
     @Override
-    public void changed(ChangeEvent event, Actor actor) {
+    public void changed (ChangeEvent event, Actor actor) {
         SelectBox<SkinContainer> selectbox = (SelectBox<SkinContainer>) actor;
-        previewer.changeSkin (selectbox.getSelected ());
+        previewer.changeSkin(selectbox.getSelected());
     }
 }

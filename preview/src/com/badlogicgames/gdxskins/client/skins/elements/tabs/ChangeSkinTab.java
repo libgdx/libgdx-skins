@@ -12,52 +12,52 @@ import com.badlogicgames.gdxskins.client.skins.info.SkinContainer;
 public class ChangeSkinTab extends Tab {
     private SkinChangerListener skinChangerListener;
 
-    public ChangeSkinTab(SkinContainer skinContainer, SkinChangerListener skinChangerListener) {
-        super (skinContainer);
+    public ChangeSkinTab (SkinContainer skinContainer, SkinChangerListener skinChangerListener) {
+        super(skinContainer);
         this.skinChangerListener = skinChangerListener;
 
-        defaults ().pad (3);
+        defaults().pad(3);
 
-        initiate ();
+        initiate();
     }
 
     @Override
-    public void initiate() {
-        Label skinName = new Label (skinContainer.skinMeta.title, skinContainer.skin);
-        Label skinDescription = new Label (skinContainer.skinMeta.description, skinContainer.skin);
-        Label skinAuthor = new Label (skinContainer.skinMeta.author, skinContainer.skin);
+    public void initiate () {
+        Label skinName = new Label(skinContainer.skinMeta.title, skinContainer.skin);
+        Label skinDescription = new Label(skinContainer.skinMeta.description, skinContainer.skin);
+        Label skinAuthor = new Label(skinContainer.skinMeta.author, skinContainer.skin);
 
-        skinName.setColor (1f, 0, 0, 1f);
-        skinDescription.setColor (1f, 0, 0, 1f);
-        skinAuthor.setColor (1f, 0, 0, 1f);
+        skinName.setColor(1f, 0, 0, 1f);
+        skinDescription.setColor(1f, 0, 0, 1f);
+        skinAuthor.setColor(1f, 0, 0, 1f);
 
-        add (new Label ("Name:", skinContainer.skin)).left ().colspan (2).padTop (12);
-        row ();
-        add (skinName).left ().colspan (2).padBottom (10);
-        row ();
-        add (new Label ("Description:", skinContainer.skin)).left ().colspan (2);
-        row ();
-        add (skinDescription).left ().colspan (2).padBottom (10);
-        row ();
-        add (new Label ("Author:", skinContainer.skin)).left ().colspan (2);
-        row ();
-        add (skinAuthor).left ().colspan (2).padBottom (10);
-        row ();
+        add(new Label("Name:", skinContainer.skin)).left().colspan(2).padTop(12);
+        row();
+        add(skinName).left().colspan(2).padBottom(10);
+        row();
+        add(new Label("Description:", skinContainer.skin)).left().colspan(2);
+        row();
+        add(skinDescription).left().colspan(2).padBottom(10);
+        row();
+        add(new Label("Author:", skinContainer.skin)).left().colspan(2);
+        row();
+        add(skinAuthor).left().colspan(2).padBottom(10);
+        row();
 
-        Label skinSelectLabel = new Label ("Select Skin", skinContainer.skin);
-        skinSelectLabel.setColor (1f, 0, 0, 1f);
+        Label skinSelectLabel = new Label("Select Skin", skinContainer.skin);
+        skinSelectLabel.setColor(1f, 0, 0, 1f);
 
-        add (skinSelectLabel).left ();
+        add(skinSelectLabel).left();
 
-        SelectBox<SkinContainer> skinSelect = new SelectBox<SkinContainer> (skinContainer.skin);
-        skinSelect.setItems (SkinTest.skins);
-        skinSelect.setSelected (skinContainer);
-        skinSelect.addListener (skinChangerListener);
-        add (skinSelect);
+        SelectBox<SkinContainer> skinSelect = new SelectBox<SkinContainer>(skinContainer.skin);
+        skinSelect.setItems(SkinTest.skins);
+        skinSelect.setSelected(skinContainer);
+        skinSelect.addListener(skinChangerListener);
+        add(skinSelect);
     }
 
     @Override
-    public String getName() {
+    public String getName () {
         return "Change Skin";
     }
 }

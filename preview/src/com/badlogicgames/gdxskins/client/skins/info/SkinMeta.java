@@ -7,7 +7,7 @@ public class SkinMeta {
     public String foldername;
     public String filename;
 
-    public SkinMeta() {
+    public SkinMeta () {
 
     }
 }

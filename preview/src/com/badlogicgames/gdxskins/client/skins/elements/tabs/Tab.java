@@ -9,24 +9,24 @@ import com.badlogicgames.gdxskins.client.skins.info.SkinContainer;
 public abstract class Tab extends Table {
     public SkinContainer skinContainer;
 
-    public Tab(SkinContainer skinContainer) {
-        super (skinContainer.skin);
+    public Tab (SkinContainer skinContainer) {
+        super(skinContainer.skin);
 
         this.skinContainer = skinContainer;
     }
 
-    public abstract void initiate();
+    public abstract void initiate ();
 
-    public abstract String getName();
+    public abstract String getName ();
 
     @Override
-    public String toString() {
-        return getName ();
+    public String toString () {
+        return getName();
     }
 
-    public void changeSkin(SkinContainer skinContainer) {
-        clearChildren ();
+    public void changeSkin (SkinContainer skinContainer) {
+        clearChildren();
         this.skinContainer = skinContainer;
-        initiate ();
+        initiate();
     }
 }

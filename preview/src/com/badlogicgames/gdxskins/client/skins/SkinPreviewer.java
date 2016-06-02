@@ -25,74 +25,74 @@ public class SkinPreviewer extends Table {
 
     private ScrollPane scroller;
 
-    public SkinPreviewer(SkinContainer skinContainer, SkinChangerListener skinChangerListener) {
+    public SkinPreviewer (SkinContainer skinContainer, SkinChangerListener skinChangerListener) {
         this.skinContainer = skinContainer;
 
-        setFillParent (true);
+        setFillParent(true);
 
-        tabsArray = new Array<Tab> ();
-        tabs = new List<Tab> (skinContainer.skin);
-        tabs.setItems (tabsArray);
-        tabs.addListener (new ChangeListener () {
+        tabsArray = new Array<Tab>();
+        tabs = new List<Tab>(skinContainer.skin);
+        tabs.setItems(tabsArray);
+        tabs.addListener(new ChangeListener() {
             @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                changeTab (tabs.getSelected ());
+            public void changed (ChangeEvent event, Actor actor) {
+                changeTab(tabs.getSelected());
             }
         });
 
-        scroller = new ScrollPane (tabs);
+        scroller = new ScrollPane(tabs);
 
-        changeSkinTab = new ChangeSkinTab (skinContainer, skinChangerListener);
+        changeSkinTab = new ChangeSkinTab(skinContainer, skinChangerListener);
     }
 
-    public void initiate() {
-        tabs.setSelectedIndex (0);
-        changeTab (tabs.getSelected ());
-    }
-
-    @Override
-    public void draw(Batch batch, float parentAlpha) {
-        super.draw (batch, parentAlpha);
+    public void initiate () {
+        tabs.setSelectedIndex(0);
+        changeTab(tabs.getSelected());
     }
 
     @Override
-    public void act(float delta) {
-        super.act (delta);
+    public void draw (Batch batch, float parentAlpha) {
+        super.draw(batch, parentAlpha);
     }
 
-    public void addTab(Tab tab) {
-        tabsArray.add (tab);
-        tabs.setItems (tabsArray);
+    @Override
+    public void act (float delta) {
+        super.act(delta);
     }
 
-    public void changeTab(Tab tab) {
-        clearChildren ();
-
-        Table table = new Table ();
-
-        Window descriptionWindow = new Window ("Description", skinContainer.skin);
-        descriptionWindow.add (changeSkinTab);
-        descriptionWindow.setMovable (false);
-        descriptionWindow.setHeight (changeSkinTab.getHeight () + 10);
-
-        table.add (descriptionWindow).fillX ();
-
-        table.row ();
-
-
-        Window scrollerWindow = new Window ("Previews", skinContainer.skin);
-        scrollerWindow.setMovable (false);
-        scrollerWindow.add (scroller).expand ().fill ();
-
-        table.add (scrollerWindow).fill ().expand ();
-
-        add (table).width (250).fill ();
-        add (tab).expand ().fill ();
+    public void addTab (Tab tab) {
+        tabsArray.add(tab);
+        tabs.setItems(tabsArray);
     }
 
-    public void changeSkin(SkinContainer selected) {
+    public void changeTab (Tab tab) {
+        clearChildren();
+
+        Table table = new Table();
+
+        Window descriptionWindow = new Window("Description", skinContainer.skin);
+        descriptionWindow.add(changeSkinTab);
+        descriptionWindow.setMovable(false);
+        descriptionWindow.setHeight(changeSkinTab.getHeight() + 10);
+
+        table.add(descriptionWindow).fillX();
+
+        table.row();
+
+
+        Window scrollerWindow = new Window("Previews", skinContainer.skin);
+        scrollerWindow.setMovable(false);
+        scrollerWindow.add(scroller).expand().fill();
+
+        table.add(scrollerWindow).fill().expand();
+
+        add(table).width(250).fill();
+        add(tab).expand().fill();
+    }
+
+    public void changeSkin (SkinContainer selected) {
         for (Tab tab : tabsArray) {
-            tab.changeSkin (selected);
+            tab.changeSkin(selected);
         }
     }
 }

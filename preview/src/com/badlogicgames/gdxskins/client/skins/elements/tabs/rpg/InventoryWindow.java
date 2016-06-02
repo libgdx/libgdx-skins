@@ -8,19 +8,19 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window;
  * Created by Lyze on 01.06.2016.
  */
 public class InventoryWindow extends Window {
-    public InventoryWindow(Skin skin) {
-        super ("Inventory", skin);
+    public InventoryWindow (Skin skin) {
+        super("Inventory", skin);
 
-        defaults ().pad (3);
+        defaults().pad(3);
 
         for (int y = 0; y < 5; y++) {
             for (int x = 0; x < 10; x++) {
-                add (new TextButton (y + "_" + x, skin)).width (40).height (40);
+                add(new TextButton(y + "_" + x, skin)).width(40).height(40);
             }
-            row ();
+            row();
         }
 
-        pack ();
-        setKeepWithinStage (true);
+        pack();
+        setKeepWithinStage(true);
     }
 }
