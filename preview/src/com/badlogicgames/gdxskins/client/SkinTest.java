@@ -47,20 +47,9 @@ public class SkinTest extends ApplicationAdapter {
         if (debug != null && debug.equalsIgnoreCase("true")) {
             stage.setDebugAll(true);
         }
-
-        SkinContainer initialSkin = skins.first();
-        String defaultSkin = Window.Location.getParameter("skin");
-        if (defaultSkin != null) {
-            for (SkinContainer skinContainer : skins) {
-                if (skinContainer.skinMeta.foldername.equals(defaultSkin)) {
-                    initialSkin = skinContainer;
-                    break;
-                }
-            }
-        }
-
         Gdx.input.setInputProcessor(stage);
 
+        SkinContainer initialSkin = skins.first();
 
         SkinChangerListener changerListener = new SkinChangerListener();
         skinPreviewer = new SkinPreviewer(initialSkin, changerListener);
