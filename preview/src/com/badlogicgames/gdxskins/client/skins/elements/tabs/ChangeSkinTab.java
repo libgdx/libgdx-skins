@@ -18,7 +18,7 @@ public class ChangeSkinTab extends Tab {
         super(skinContainer);
         this.skinChangerListener = skinChangerListener;
 
-        defaults().pad(10);
+        defaults().pad(3);
 
         initiate();
     }
@@ -33,15 +33,17 @@ public class ChangeSkinTab extends Tab {
         skinDescription.setColor(1f, 0, 0, 1f);
         skinAuthor.setColor(1f, 0, 0, 1f);
 
-
-        add(new Label("Name:", skinContainer.skin)).left();
-        add(skinName);
+        add(new Label("Name:", skinContainer.skin)).left().colspan(2).padTop(12);
         row();
-        add(new Label("Description:", skinContainer.skin)).left();
-        add(skinDescription);
+        add(skinName).left().colspan(2).padBottom(10);
         row();
-        add(new Label("Author:", skinContainer.skin)).left();
-        add(skinAuthor);
+        add(new Label("Description:", skinContainer.skin)).left().colspan(2);
+        row();
+        add(skinDescription).left().colspan(2).padBottom(10);
+        row();
+        add(new Label("Author:", skinContainer.skin)).left().colspan(2);
+        row();
+        add(skinAuthor).left().colspan(2).padBottom(10);
         row();
 
         Label skinSelectLabel = new Label("Select Skin", skinContainer.skin);

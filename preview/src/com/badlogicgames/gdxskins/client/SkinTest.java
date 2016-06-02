@@ -3,15 +3,16 @@ package com.badlogicgames.gdxskins.client;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.badlogicgames.gdxskins.client.skins.SkinChangerListener;
 import com.badlogicgames.gdxskins.client.skins.SkinPreviewer;
-import com.badlogicgames.gdxskins.client.skins.elements.tabs.ChangeSkinTab;
-import com.badlogicgames.gdxskins.client.skins.elements.tabs.PreviewTab;
+import com.badlogicgames.gdxskins.client.skins.elements.tabs.PreviewGui;
 import com.badlogicgames.gdxskins.client.skins.elements.tabs.rpg.RpgGuiTab;
 import com.badlogicgames.gdxskins.client.skins.info.SkinContainer;
 import com.badlogicgames.gdxskins.client.skins.info.SkinMeta;
@@ -50,9 +51,10 @@ public class SkinTest extends ApplicationAdapter {
 
         SkinContainer initialSkin = skins.first();
 
-        skinPreviewer = new SkinPreviewer(initialSkin);
-        skinPreviewer.addTab(new ChangeSkinTab(initialSkin, new SkinChangerListener(skinPreviewer)));
-        skinPreviewer.addTab(new PreviewTab(initialSkin));
+		SkinChangerListener changerListener = new SkinChangerListener();
+        skinPreviewer = new SkinPreviewer(initialSkin, changerListener);
+        changerListener.setPreviewer(skinPreviewer);
+        skinPreviewer.addTab(new PreviewGui(initialSkin));
         skinPreviewer.addTab(new RpgGuiTab(initialSkin));
         skinPreviewer.initiate();
 

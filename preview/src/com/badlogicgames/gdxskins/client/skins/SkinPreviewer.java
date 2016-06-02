@@ -5,8 +5,10 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Array;
+import com.badlogicgames.gdxskins.client.skins.elements.tabs.ChangeSkinTab;
 import com.badlogicgames.gdxskins.client.skins.elements.tabs.Tab;
 import com.badlogicgames.gdxskins.client.skins.info.SkinContainer;
 
@@ -19,9 +21,11 @@ public class SkinPreviewer extends Table {
     private Array<Tab> tabsArray;
     private List<Tab> tabs;
 
+    private ChangeSkinTab changeSkinTab;
+
     private ScrollPane scroller;
 
-    public SkinPreviewer(SkinContainer skinContainer) {
+    public SkinPreviewer(SkinContainer skinContainer, SkinChangerListener skinChangerListener) {
         this.skinContainer = skinContainer;
 
         setFillParent(true);
@@ -37,6 +41,8 @@ public class SkinPreviewer extends Table {
         });
 
         scroller = new ScrollPane(tabs);
+
+        changeSkinTab = new ChangeSkinTab(skinContainer, skinChangerListener);
     }
 
     public void initiate() {
@@ -62,7 +68,25 @@ public class SkinPreviewer extends Table {
     public void changeTab(Tab tab) {
         clearChildren();
 
-        add(scroller).width(250);
+        Table table = new Table();
+
+        Window descriptionWindow = new Window("Description", skinContainer.skin);
+        descriptionWindow.add(changeSkinTab);
+        descriptionWindow.setMovable(false);
+        descriptionWindow.setHeight(changeSkinTab.getHeight() + 10);
+
+        table.add(descriptionWindow).fillX();
+
+        table.row();
+
+
+        Window scrollerWindow = new Window("Previews", skinContainer.skin);
+        scrollerWindow.setMovable(false);
+        scrollerWindow.add(scroller).expand().fill();
+
+        table.add(scrollerWindow).fill().expand();
+
+        add(table).width(250).fill();
         add(tab).expand().fill();
     }
 

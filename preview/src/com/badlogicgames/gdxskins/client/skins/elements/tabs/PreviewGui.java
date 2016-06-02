@@ -9,8 +9,8 @@ import com.badlogicgames.gdxskins.client.skins.info.SkinContainer;
 /**
  * Created by Lyze on 01.06.2016.
  */
-public class PreviewTab extends Tab {
-    public PreviewTab(SkinContainer skinContainer) {
+public class PreviewGui extends Tab {
+    public PreviewGui(SkinContainer skinContainer) {
         super(skinContainer);
 
         initiate();
@@ -46,7 +46,7 @@ public class PreviewTab extends Tab {
 
         textWindow.setSize(300, 300);
 
-        textWindow.setPosition(0, Gdx.graphics.getHeight() - 310);
+        textWindow.setPosition(10, Gdx.graphics.getHeight() - 310);
         addActor(textWindow);
 
         Window buttonWindow = new Window("Button Widgets", skin);
@@ -69,7 +69,7 @@ public class PreviewTab extends Tab {
         buttonWindow.row();
 
         buttonWindow.setSize(300, 300);
-        buttonWindow.setPosition(310, Gdx.graphics.getHeight() - 310);
+        buttonWindow.setPosition(320, Gdx.graphics.getHeight() - 310);
         addActor(buttonWindow);
 
         Window sliderWindow = new Window("Slider", skin);
@@ -100,7 +100,7 @@ public class PreviewTab extends Tab {
         sliderWindow.add(progressBar);
 
         sliderWindow.setSize(180, 200);
-        sliderWindow.setPosition(620, Gdx.graphics.getHeight() - 250);
+        sliderWindow.setPosition(630, Gdx.graphics.getHeight() - 250);
         addActor(sliderWindow);
 
         Tree tree = new Tree(skin);
@@ -168,6 +168,6 @@ public class PreviewTab extends Tab {
 
     @Override
     public String getName() {
-        return "Preview Tab";
+        return "Preview Gui";
     }
 }

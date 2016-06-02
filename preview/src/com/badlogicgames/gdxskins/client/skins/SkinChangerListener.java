@@ -10,9 +10,9 @@ import com.badlogicgames.gdxskins.client.skins.info.SkinContainer;
  */
 public class SkinChangerListener extends ChangeListener {
 
-    private final SkinPreviewer previewer;
+    private SkinPreviewer previewer;
 
-    public SkinChangerListener(SkinPreviewer previewer) {
+    public void setPreviewer(SkinPreviewer previewer) {
         this.previewer = previewer;
     }
 
