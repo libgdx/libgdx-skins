@@ -50,6 +50,15 @@ public class SkinTest extends ApplicationAdapter {
         Gdx.input.setInputProcessor(stage);
 
         SkinContainer initialSkin = skins.first();
+        String defaultSkin = Window.Location.getParameter("skin");
+        if (defaultSkin != null) {
+            for (SkinContainer skinContainer : skins) {
+                if (skinContainer.skinMeta.foldername.equals(defaultSkin)) {
+                    initialSkin = skinContainer;
+                    break;
+                }
+            }
+        }
 
         SkinChangerListener changerListener = new SkinChangerListener();
         skinPreviewer = new SkinPreviewer(initialSkin, changerListener);
