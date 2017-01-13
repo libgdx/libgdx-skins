@@ -10,11 +10,16 @@ public class SpellWindow extends Window {
         super("Spells", skin);
 
         defaults().pad(2);
-
-        for (int i = 0; i < 10; i++) {
-            Button spell = new TextButton("S" + i, skin);
-            spell.addListener(new TextTooltip("This is a tooltip!\nThis spell is really important!\nSerious stats about this spell!\nThis is a tooltip!", skin));
-            add(spell).width(52).height(52);
+        if(skin.has("default", TextButton.TextButtonStyle.class)) {
+            for (int i = 0; i < 10; i++) {
+                Button spell = new TextButton("S" + i, skin);
+                spell.addListener(new TextTooltip("This is a tooltip!\nThis spell is really important!\nSerious stats about this spell!\nThis is a tooltip!", skin));
+                add(spell).width(52).height(52);
+            }
+        }
+        else{
+            Label noDefaultTextButtonStyle = new Label("no default TextButtonStyle in skin",skin);
+            add(noDefaultTextButtonStyle).width(520).height(52);
         }
 
         pack();

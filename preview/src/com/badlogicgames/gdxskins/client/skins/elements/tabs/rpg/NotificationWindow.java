@@ -10,11 +10,17 @@ public class NotificationWindow extends Window {
         super("Notifications", skin);
 
         defaults().pad(2);
+        if(skin.has("default", TextButton.TextButtonStyle.class)) {
 
-        for (int i = 0; i < 4; i++) {
-            Button notification = new TextButton("N" + i, skin);
-            notification.addListener(new TextTooltip("This is a tooltip!\nThis notification is really important!\nSeriously, read it!", skin));
-            add(notification).width(32).height(32);
+            for (int i = 0; i < 4; i++) {
+                Button notification = new TextButton("N" + i, skin);
+                notification.addListener(new TextTooltip("This is a tooltip!\nThis notification is really important!\nSeriously, read it!", skin));
+                add(notification).width(32).height(32);
+            }
+        }
+        else{
+            Label noDefaultTextButtonStyle = new Label("no default TextButtonStyle",skin);
+            add(noDefaultTextButtonStyle).width(128).height(32);
         }
 
         pack();

@@ -1,3 +1,4 @@
+
 package com.badlogicgames.gdxskins.client;
 
 import com.badlogic.gdx.Application;
@@ -16,74 +17,78 @@ import com.badlogicgames.gdxskins.client.skins.info.SkinContainer;
 import com.badlogicgames.gdxskins.client.skins.info.SkinMeta;
 import com.google.gwt.user.client.Window;
 
-/**
- * @author Tom-Ski
- */
+/** @author Tom-Ski */
 public class SkinTest extends ApplicationAdapter {
 
-    public static Array<SkinContainer> skins = new Array<SkinContainer>();
-    private SkinPreviewer skinPreviewer;
-    private Stage stage;
+	public static Array<SkinContainer> skins = new Array<SkinContainer>();
+	private SkinPreviewer skinPreviewer;
+	private Stage stage;
+	private static final String initialSkinFolderName = "testskin";
 
-    @Override
-    public void create () {
-        Gdx.app.setLogLevel(Application.LOG_INFO);
+	@Override
+	public void create () {
+		Gdx.app.setLogLevel(Application.LOG_INFO);
 
-        String masterListString = Gdx.files.internal("masterlist").readString();
-        String[] masterSplit = masterListString.split("\r\n");
+		String masterListString = Gdx.files.internal("masterlist").readString();
+		String[] masterSplit = masterListString.split("\r\n");
 
-        Json json = new Json();
-        for (int i = 0; i < masterSplit.length; i++) {
-            String skinString = masterSplit[i];
-            String skinjson = Gdx.files.internal(skinString + "/info.json").readString();
-            SkinMeta meta = json.fromJson(SkinMeta.class, skinjson);
-            Skin skin = new Skin(Gdx.files.internal(skinString + "/assets/" + meta.filename));
-            skins.add(new SkinContainer(meta, skin));
-        }
+		Json json = new Json();
+		for (int i = 0; i < masterSplit.length; i++) {
+			String skinString = masterSplit[i];
+			String skinjson = Gdx.files.internal(skinString + "/info.json").readString();
+			SkinMeta meta = json.fromJson(SkinMeta.class, skinjson);
+			Skin skin = new Skin(Gdx.files.internal(skinString + "/assets/" + meta.filename));
+			skins.add(new SkinContainer(meta, skin));
+		}
 
-        stage = new Stage();
+		stage = new Stage();
 
-        String debug = Window.Location.getParameter("debug");
-        if (debug != null && debug.equalsIgnoreCase("true")) {
-            stage.setDebugAll(true);
-        }
-        Gdx.input.setInputProcessor(stage);
+		String debug = Window.Location.getParameter("debug");
+		if (debug != null && debug.equalsIgnoreCase("true")) {
+			stage.setDebugAll(true);
+		}
+		Gdx.input.setInputProcessor(stage);
+		SkinContainer initialSkin = skins.first();
+		for (int i = 0; i < skins.size; i++){
+			if (skins.get(i).skinMeta.foldername.equalsIgnoreCase(initialSkinFolderName)) {
+				initialSkin = skins.get(i);
+			}
+		}
 
-        SkinContainer initialSkin = skins.first();
-        String defaultSkin = Window.Location.getParameter("skin");
-        if (defaultSkin != null) {
-            for (SkinContainer skinContainer : skins) {
-                if (skinContainer.skinMeta.foldername.equals(defaultSkin)) {
-                    initialSkin = skinContainer;
-                    break;
-                }
-            }
-        }
+		String defaultSkin = Window.Location.getParameter("skin");
+		if (defaultSkin != null) {
+			for (SkinContainer skinContainer : skins) {
+				if (skinContainer.skinMeta.foldername.equals(defaultSkin)) {
+					initialSkin = skinContainer;
+					break;
+				}
+			}
+		}
 
-        SkinChangerListener changerListener = new SkinChangerListener();
-        skinPreviewer = new SkinPreviewer(initialSkin, changerListener);
-        changerListener.setPreviewer(skinPreviewer);
-        skinPreviewer.addTab(new RpgGuiTab(initialSkin));
-        skinPreviewer.addTab(new PreviewGui(initialSkin));
-        skinPreviewer.initiate();
+		SkinChangerListener changerListener = new SkinChangerListener();
+		skinPreviewer = new SkinPreviewer(initialSkin, changerListener);
+		changerListener.setPreviewer(skinPreviewer);
+		skinPreviewer.addTab(new RpgGuiTab(initialSkin));
+		skinPreviewer.addTab(new PreviewGui(initialSkin));
+		skinPreviewer.initiate();
 
-        stage.addActor(skinPreviewer);
-    }
+		stage.addActor(skinPreviewer);
+	}
 
-    @Override
-    public void render () {
-        Gdx.gl.glClearColor(0, 0, 0, 1f);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+	@Override
+	public void render () {
+		Gdx.gl.glClearColor(0, 0, 0, 1f);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        stage.act();
-        stage.draw();
-    }
+		stage.act();
+		stage.draw();
+	}
 
-    @Override
-    public void dispose () {
-        stage.dispose();
-        for (SkinContainer skinContainer : skins) {
-            skinContainer.dispose();
-        }
-    }
+	@Override
+	public void dispose () {
+		stage.dispose();
+		for (SkinContainer skinContainer : skins) {
+			skinContainer.dispose();
+		}
+	}
 }

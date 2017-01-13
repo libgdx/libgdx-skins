@@ -2,6 +2,7 @@
 ### Gradle template
 .gradle
 build/
+preview/war/
 
 # Ignore Gradle GUI config
 gradle-app.setting
