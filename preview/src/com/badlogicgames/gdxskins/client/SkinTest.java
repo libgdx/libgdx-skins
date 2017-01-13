@@ -24,6 +24,7 @@ public class SkinTest extends ApplicationAdapter {
     public static Array<SkinContainer> skins = new Array<SkinContainer>();
     private SkinPreviewer skinPreviewer;
     private Stage stage;
+    private static final String initialSkinFolderName = "testskin";
 
     @Override
     public void create () {
@@ -31,6 +32,7 @@ public class SkinTest extends ApplicationAdapter {
 
         String masterListString = Gdx.files.internal("masterlist").readString();
         String[] masterSplit = masterListString.split("\r\n");
+
 
         Json json = new Json();
         for (int i = 0; i < masterSplit.length; i++) {
@@ -48,8 +50,13 @@ public class SkinTest extends ApplicationAdapter {
             stage.setDebugAll(true);
         }
         Gdx.input.setInputProcessor(stage);
-
         SkinContainer initialSkin = skins.first();
+        for(int i = 0;i<skins.size;i++){
+            if(skins.get(i).skinMeta.foldername.equalsIgnoreCase(initialSkinFolderName)){
+                initialSkin = skins.get(i);
+            }
+        }
+
         String defaultSkin = Window.Location.getParameter("skin");
         if (defaultSkin != null) {
             for (SkinContainer skinContainer : skins) {

@@ -18,6 +18,7 @@ import com.badlogicgames.gdxskins.client.skins.info.SkinContainer;
 public class SkinPreviewer extends Table {
 
     private SkinContainer skinContainer;
+    public static SkinContainer defaultSkinContainer;
     private Array<Tab> tabsArray;
     private List<Tab> tabs;
 

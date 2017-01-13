@@ -11,7 +11,6 @@ public abstract class Tab extends Table {
 
     public Tab (SkinContainer skinContainer) {
         super(skinContainer.skin);
-
         this.skinContainer = skinContainer;
     }
 
